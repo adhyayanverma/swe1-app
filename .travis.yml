@@ -13,7 +13,7 @@ script:
  # 2. Check for linting errors
  - flake8 . --max-line-length=88
  # 3. Run tests with coverage tracking
- - coverage run --source=djangotutorial manage.py test
+ - coverage run --source=djangotutorial manage.py test djangotutorial
 
 after_success:
  # 4. Send the results to Coveralls to get your badge
