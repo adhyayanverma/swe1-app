@@ -3,7 +3,6 @@ import datetime
 from django.test import TestCase
 from django.utils import timezone
 from .models import Question
-from django.urls import reverse
 
 
 class QuestionModelTests(TestCase):
@@ -24,5 +23,3 @@ class QuestionModelTests(TestCase):
         time = timezone.now() - datetime.timedelta(days=1, seconds=1)
         old_question = Question(pub_date=time)
         self.assertIs(old_question.was_published_recently(), False)
-
-
