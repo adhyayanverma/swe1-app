@@ -1,0 +1,20 @@
+[flake8]
+# Match Black's default line length
+max-line-length = 88
+
+# Common directories to ignore
+exclude =
+    .git,
+    __pycache__,
+    # Django migrations are auto-generated and often break style rules
+    */migrations/*,
+    # Ignore your virtual environment
+    venv/,
+    .venv/,
+    env/,
+    lib/
+
+# Optional: Ignore specific error codes globally
+# E203: whitespace before ':' (disagrees with Black)
+# W503: line break before binary operator (disagrees with Black)
+extend-ignore = E203, W503

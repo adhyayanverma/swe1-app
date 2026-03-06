@@ -11,9 +11,9 @@ script:
  # 1. Check formatting (will fail if code isn't "Blackened")
  - black --check .
  # 2. Check for linting errors
- - flake8 . --max-line-length=88
+ - flake8 .
  # 3. Run tests with coverage tracking
- - coverage run --source=djangotutorial manage.py test djangotutorial
+ - coverage run --source=polls,mysite manage.py test
 
 after_success:
  # 4. Send the results to Coveralls to get your badge
