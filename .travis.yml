@@ -16,5 +16,4 @@ script:
  - coverage run --source=polls,mysite manage.py test polls
 
 after_success:
- # 4. Send the results to Coveralls to get your badge
  - coveralls
