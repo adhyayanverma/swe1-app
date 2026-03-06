@@ -5,6 +5,7 @@ from django.utils import timezone
 from .models import Question
 from django.urls import reverse
 
+
 class QuestionModelTests(TestCase):
     def test_was_published_recently_with_future_question(self):
         """
@@ -39,7 +40,8 @@ class QuestionIndexViewTests(TestCase):
         """
         Questions with a pub_date in the past are displayed on the index page.
         """
-        Question.objects.create(question_text="Past question.", pub_date=timezone.now() - datetime.timedelta(days=30))
+        Question.objects.create(question_text="Past question.",
+                                pub_date=timezone.now() - datetime.timedelta(days=30))
         response = self.client.get(reverse("polls:index"))
         self.assertQuerySetEqual(
             response.context["latest_question_list"],
