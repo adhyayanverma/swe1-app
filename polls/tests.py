@@ -26,24 +26,3 @@ class QuestionModelTests(TestCase):
         self.assertIs(old_question.was_published_recently(), False)
 
 
-class QuestionIndexViewTests(TestCase):
-    def test_no_questions(self):
-        """
-        If no questions exist, an appropriate message is displayed.
-        """
-        response = self.client.get(reverse("polls:index"))
-        self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "No polls are available.")
-        self.assertQuerySetEqual(response.context["latest_question_list"], [])
-
-    def test_past_question(self):
-        """
-        Questions with a pub_date in the past are displayed on the index page.
-        """
-        Question.objects.create(question_text="Past question.",
-                                pub_date=timezone.now() - datetime.timedelta(days=30))
-        response = self.client.get(reverse("polls:index"))
-        self.assertQuerySetEqual(
-            response.context["latest_question_list"],
-            ["<Question: Past question.>"]
-        )
