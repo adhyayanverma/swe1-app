@@ -25,11 +25,13 @@ class QuestionModelTests(TestCase):
         old_question = Question(pub_date=time)
         self.assertIs(old_question.was_published_recently(), False)
 
+
 class ProjectURLsTests(TestCase):
     def test_admin_url_resolves(self):
         """Checks if the admin URL is correctly configured."""
         url = reverse('admin:index')
         self.assertEqual(resolve(url).func.__name__, 'index')
+
 
 class QuestionDetailViewTests(TestCase):
     def test_future_question(self):
@@ -57,3 +59,4 @@ class QuestionDetailViewTests(TestCase):
         url = reverse("polls:detail", args=(past_question.id,))
         response = self.client.get(url)
         self.assertContains(response, past_question.question_text)
+
