@@ -4,7 +4,8 @@ python:
 
 install:
  - pip install -r requirements.txt
- - pip install black flake8 coverage coveralls
+ - pip install black flake8 coverage
+ - pip install coveralls
 
 script:
  # 1. Check formatting (will fail if code isn't "Blackened")
