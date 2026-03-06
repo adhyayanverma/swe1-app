@@ -29,8 +29,8 @@ class QuestionModelTests(TestCase):
 class ProjectURLsTests(TestCase):
     def test_admin_url_resolves(self):
         """Checks if the admin URL is correctly configured."""
-        url = reverse('admin:index')
-        self.assertEqual(resolve(url).func.__name__, 'index')
+        url = reverse("admin:index")
+        self.assertEqual(resolve(url).func.__name__, "index")
 
 
 class QuestionDetailViewTests(TestCase):
@@ -41,7 +41,7 @@ class QuestionDetailViewTests(TestCase):
         """
         future_question = Question.objects.create(
             question_text="Future question.",
-            pub_date=timezone.now() + datetime.timedelta(days=5)
+            pub_date=timezone.now() + datetime.timedelta(days=5),
         )
         url = reverse("polls:detail", args=(future_question.id,))
         response = self.client.get(url)
@@ -54,7 +54,7 @@ class QuestionDetailViewTests(TestCase):
         """
         past_question = Question.objects.create(
             question_text="Past Question.",
-            pub_date=timezone.now() - datetime.timedelta(days=5)
+            pub_date=timezone.now() - datetime.timedelta(days=5),
         )
         url = reverse("polls:detail", args=(past_question.id,))
         response = self.client.get(url)
