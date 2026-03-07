@@ -15,7 +15,6 @@ include/
 
 # --- Django Specific ---
 # Exclude the local database and secret keys
-db.sqlite3
 .env
 local_settings.py
 *.log
