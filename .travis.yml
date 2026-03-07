@@ -28,9 +28,3 @@ deploy:
   bucket_name: "elasticbeanstalk-us-east-1-227176596642"  # replace this
   on:
     branch: main
-
-## Step 6: Add a `Procfile`
-
-Create `Procfile` in your project root:
-
-web: gunicorn mysite.wsgi --bind 0.0.0.0:8000
