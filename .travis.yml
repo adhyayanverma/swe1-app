@@ -17,3 +17,20 @@ script:
 
 after_success:
  - coveralls --service=travis-pro
+
+deploy:
+  provider: elasticbeanstalk
+  access_key_id: $AWS_ACCESS_KEY_ID
+  secret_access_key: $AWS_SECRET_ACCESS_KEY
+  region: "us-east-1"
+  app: "swe1-app"
+  env: "swe1-app-env"
+  bucket_name: "elasticbeanstalk-us-east-1-227176596642"  # replace this
+  on:
+    branch: main
+
+## Step 6: Add a `Procfile`
+
+Create `Procfile` in your project root:
+
+web: gunicorn mysite.wsgi --bind 0.0.0.0:8000
